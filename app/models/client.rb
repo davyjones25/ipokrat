@@ -1,6 +1,7 @@
 class Client < ApplicationRecord
+	has_many :prescriptions
 	belongs_to :doctor
-	has_many :prescriptions, dependent: :destroy
+	belongs_to :retailer
 
-	validates [:name, :birthdate], presence: true
+	validates [:name, :birthdate, :phone], presence: true
 end

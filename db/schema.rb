@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_03_100218) do
+ActiveRecord::Schema.define(version: 2018_10_03_141008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2018_10_03_100218) do
     t.date "birthdate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "phone"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -33,6 +34,8 @@ ActiveRecord::Schema.define(version: 2018_10_03_100218) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "last_name"
+    t.bigint "client_id"
+    t.index ["client_id"], name: "index_doctors_on_client_id"
   end
 
   create_table "drugs", force: :cascade do |t|
@@ -45,15 +48,15 @@ ActiveRecord::Schema.define(version: 2018_10_03_100218) do
   end
 
   create_table "prescriptions", force: :cascade do |t|
-    t.bigint "doctor_id"
     t.bigint "client_id"
-    t.bigint "retailer_id"
     t.boolean "active"
     t.integer "length_of_treatment"
     t.boolean "refundable"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "renewable"
+    t.bigint "doctor_id"
+    t.bigint "retailer_id"
     t.index ["client_id"], name: "index_prescriptions_on_client_id"
     t.index ["doctor_id"], name: "index_prescriptions_on_doctor_id"
     t.index ["retailer_id"], name: "index_prescriptions_on_retailer_id"
@@ -76,10 +79,12 @@ ActiveRecord::Schema.define(version: 2018_10_03_100218) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "role"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "doctors", "clients"
   add_foreign_key "drugs", "prescriptions"
   add_foreign_key "prescriptions", "clients"
   add_foreign_key "prescriptions", "doctors"

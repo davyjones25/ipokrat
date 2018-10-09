@@ -5,7 +5,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :timeoutable
 
-  has_many :prescriptions
-  has_many :drugs
+  has_one :role
 
+  def role?
+  	self.role == "retailer" || "doctor" || "client"
+  end
 end

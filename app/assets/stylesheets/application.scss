@@ -13,3 +13,11 @@
 @import "layouts/index";
 @import "components/index";
 @import "pages/index";
+
+body {
+	background-image: url("background-image.png");
+	background-position: center;
+  background-size: 100% 100vh;
+	background-color: #5DECC4;
+  background-repeat: repeat-y;
+}

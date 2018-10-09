@@ -2,7 +2,8 @@ class Prescription < ApplicationRecord
   belongs_to :doctor
   belongs_to :client
   belongs_to :retailer
-  has_many :drugs
+
+  has_many :drugs, dependent: :destroy
 
   validates :length_of_treatment, presence: true
   validates_associated :drugs

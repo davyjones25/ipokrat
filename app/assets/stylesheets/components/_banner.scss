@@ -1,0 +1,8 @@
+.banner {
+	background-image: url("background-image.png");
+	padding-top: 10px;
+	padding-bottom: 5px;
+  min-height: 100vh;
+  background-position: center; /* Center the image */
+  background-size: contain, cover;
+}

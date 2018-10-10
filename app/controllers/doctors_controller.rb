@@ -1,6 +1,6 @@
 class DoctorsController < ApplicationController
   before_action :set_doctor, only: [:show, :edit, :update]
-  authorized @prescription, create?, index?
+#  authorized @prescription, create?, index?
 
   def create
   	@doctor = Doctor.new(doctor_params)

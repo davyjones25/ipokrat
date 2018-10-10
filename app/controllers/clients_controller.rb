@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   before_action :set_retailer, only: [:show, :edit, :update]
-  authorized @prescription, index?
+#  authorized @prescription, index?
 
 
   def create
@@ -18,6 +18,9 @@ class ClientsController < ApplicationController
   end
 
   def edit
+  end
+
+  def index
   end
 
   def update

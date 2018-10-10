@@ -1,6 +1,6 @@
 class RetailersController < ApplicationController
   before_action :set_retailer, only: [:show, :edit, :update]
-  authorized @prescription, update?, index?
+#  authorized @prescription, update?, index?
 
 
   def create

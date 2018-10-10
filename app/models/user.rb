@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :timeoutable
 
+  validates :role, presence: true
 
-  ROLES = %w[doctor client retailer]
+  roles = ["doctor", "client", "retailer"]
 end

@@ -5,9 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :timeoutable
 
-  has_one :role
 
-  def role?
-  	self.role == "retailer" || "doctor" || "client"
-  end
+  ROLES = %w[doctor client retailer]
 end

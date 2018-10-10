@@ -1,28 +1,17 @@
 Rails.application.routes.draw do
   devise_for :users
   
-  get 'drugs/create'
-  get 'drugs/new'
-  get 'prescriptions/create'
-  get 'prescriptions/new'
-  get 'prescriptions/destroy'
-  get 'prescriptions/index'
-  get 'prescriptions/show'
-  get 'clients/create'
-  get 'clients/new'
-  get 'clients/edit'
-  get 'clients/update'
-  get 'clients/show'
-  get 'doctors/create'
-  get 'doctors/new'
-  get 'doctors/edit'
-  get 'doctors/update'
-  get 'doctors/show'
-  get 'retailers/create'
-  get 'retailers/new'
-  get 'retailers/edit'
-  get 'retailers/update'
-  get 'retailers/show'
+  resources :doctors, only: [:new, :create, :edit, :update, :show] do
+  	resources :prescriptions, only: [:new, :create, :index]
+  end
+
+  resources :clients, only: [:new, :create, :edit, :update, :show, :destroy] do
+  	resources :prescriptions, only: [:show, :index]
+  end
+
+  resources :retailers, only: [:new, :create, :edit, :update, :show] do
+  	resources :prescriptions, only: [:update, :show, :index]
+  end
 
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

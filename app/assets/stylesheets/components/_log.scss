@@ -1,9 +1,10 @@
 .form-login {
 	h2{
 		text-align: center;
-		color: white;
+		color: #06E3A6;
 	}
-  background: #06E3A6;
+  //background: #06E3A6;
+  background: white;
   padding: 10px 20px;
   margin-top: 50px;
   border-radius: 3px;
@@ -11,7 +12,7 @@
   margin-right: 25%;
   margin-left: 25%;
   margin-bottom: 50px;
-	opacity: 0.85;  
+	opacity: 0.95;  
   .btn {
   	display: center;
     width: 20%;
@@ -20,9 +21,7 @@
     margin-right: auto;
     width: 6em;
   }
-  .collection {
 
-  }
   .form-actions {
 	  display: flex;
 		justify-content: center;

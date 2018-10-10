@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_09_171009) do
+ActiveRecord::Schema.define(version: 2018_10_03_141008) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,8 +22,6 @@ ActiveRecord::Schema.define(version: 2018_10_09_171009) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "phone"
-    t.bigint "role_id"
-    t.index ["role_id"], name: "index_clients_on_role_id"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -37,9 +35,7 @@ ActiveRecord::Schema.define(version: 2018_10_09_171009) do
     t.datetime "updated_at", null: false
     t.string "last_name"
     t.bigint "client_id"
-    t.bigint "role_id"
     t.index ["client_id"], name: "index_doctors_on_client_id"
-    t.index ["role_id"], name: "index_doctors_on_role_id"
   end
 
   create_table "drugs", force: :cascade do |t|
@@ -73,16 +69,6 @@ ActiveRecord::Schema.define(version: 2018_10_09_171009) do
     t.integer "phone"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "role_id"
-    t.index ["role_id"], name: "index_retailers_on_role_id"
-  end
-
-  create_table "roles", force: :cascade do |t|
-    t.string "role"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_roles_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -98,13 +84,9 @@ ActiveRecord::Schema.define(version: 2018_10_09_171009) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "clients", "roles"
   add_foreign_key "doctors", "clients"
-  add_foreign_key "doctors", "roles"
   add_foreign_key "drugs", "prescriptions"
   add_foreign_key "prescriptions", "clients"
   add_foreign_key "prescriptions", "doctors"
   add_foreign_key "prescriptions", "retailers"
-  add_foreign_key "retailers", "roles"
-  add_foreign_key "roles", "users"
 end

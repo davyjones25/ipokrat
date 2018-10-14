@@ -1,5 +1,5 @@
 class Retailer < ApplicationRecord
-	belongs_to :role
+	belongs_to :user
 	
 	has_many :prescriptions
 	has_many :drugs, through: :prescriptions

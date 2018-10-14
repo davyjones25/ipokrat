@@ -1,14 +1,16 @@
 class ClientsController < ApplicationController
-  before_action :set_retailer, only: [:show, :edit, :update]
+  before_action :set_client, only: [:show, :edit, :update]
 #  authorized @prescription, index?
 
 
   def create
   	@client = Client.new(client_params)
   	@client.user = current_user
+  	@client.save
   	if @client.save
-  		redirect_to client_path(client)
+  		redirect_to client_path(@client)
   	else
+  		raise
   		render :new
   	end
   end
@@ -32,6 +34,8 @@ class ClientsController < ApplicationController
   end
 
   def show
+  	@current_user = current_user
+  	@prescriptions = Prescription.all
   end
 
   def client_params
@@ -39,6 +43,6 @@ class ClientsController < ApplicationController
   end
 
   def set_retailer
-    @rclient = Client.find(params[:id])
+    @client = Client.find(params[:id])
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_03_141008) do
+ActiveRecord::Schema.define(version: 2018_10_12_133111) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,8 @@ ActiveRecord::Schema.define(version: 2018_10_03_141008) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "phone"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
   create_table "doctors", force: :cascade do |t|
@@ -35,7 +37,9 @@ ActiveRecord::Schema.define(version: 2018_10_03_141008) do
     t.datetime "updated_at", null: false
     t.string "last_name"
     t.bigint "client_id"
+    t.bigint "user_id"
     t.index ["client_id"], name: "index_doctors_on_client_id"
+    t.index ["user_id"], name: "index_doctors_on_user_id"
   end
 
   create_table "drugs", force: :cascade do |t|
@@ -84,7 +88,9 @@ ActiveRecord::Schema.define(version: 2018_10_03_141008) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "clients", "users"
   add_foreign_key "doctors", "clients"
+  add_foreign_key "doctors", "users"
   add_foreign_key "drugs", "prescriptions"
   add_foreign_key "prescriptions", "clients"
   add_foreign_key "prescriptions", "doctors"

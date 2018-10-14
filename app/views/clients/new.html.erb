@@ -4,14 +4,17 @@
 	</div>
 	<div class="form-inputs">
 		<%= simple_form_for @client do |f| %>
+		<div class="form-inputs">
+	    <%= f.error_notification %>
 			<%= f.input :first_name %>
 			<%= f.input :last_name %>
-			<%= f.input :phone %>			
+			<%= f.input :phone, as: :integer %>			
 	    <%= f.input :birthdate, as: :date, start_year: Date.today.year - 90,
 	                                end_year: Date.today.year - 12, discard_day: false,
-	                                order: [:day, :month, :year],
-	                                input_html: {type: :date} %>
+	                                order: [:day, :month, :year] %>
 			<%= f.button :submit, "Créer mon compte" %>
 		<% end %>
+		</div>
+
 	</div>
 </div>

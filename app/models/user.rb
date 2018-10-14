@@ -5,6 +5,10 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :timeoutable
 
+  has_one :client
+  has_one :doctor
+  has_one :retailer
+
   validates :role, presence: true
 
   roles = ["doctor", "client", "retailer"]

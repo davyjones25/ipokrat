@@ -2,14 +2,16 @@ Rails.application.routes.draw do
   devise_for :users
   
   resources :doctors, only: [:new, :create, :edit, :update, :show] do
-  	resources :prescriptions, only: [:new, :create, :index]
+    resources :clients, only: [:index]
+  	resources :prescriptions, only: [:new, :create, :show, :index]
   end
 
   resources :clients, only: [:new, :create, :edit, :update, :show, :destroy] do
-  	resources :prescriptions, only: [:show, :index]
+  	resources :prescriptions, only: [:show, :index, :destroy]
   end
 
   resources :retailers, only: [:new, :create, :edit, :update, :show] do
+    resources :clients, only: [:index]
   	resources :prescriptions, only: [:update, :show, :index]
   end
 

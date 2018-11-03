@@ -1,2 +1,24 @@
 <h1>Prescriptions#new</h1>
 <p>Find me in app/views/prescriptions/new.html.erb</p>
+
+<div class="form-prescription">
+	<div>
+		<h2>Nouvelle prescription</h2>
+	</div>
+	<div class="form-inputs">
+		<%= simple_form_for @prescription.drugs do |f| %>
+	    <%= f.error_notification %>
+	    <%= @prescription.client.first_name %>
+	    <%= @prescription.client.last_name %>
+	    <%= @prescription.client.birthdate %>
+	    <%= f.input :drug_name %>
+	    <%= f.input :drug_posology %>
+	    <%= f.input :length_of_treatment, as: :integer %>
+			<%= f.input :renewable, as: :checkbox %>
+			<%= f.input :refundable, as: :checkbox %>
+		<div class="form-actions">
+			<%= f.button :submit, "Créer mon compte" %>
+		</div>
+		<% end %>
+	</div>
+</div>

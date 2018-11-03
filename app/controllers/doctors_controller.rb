@@ -6,7 +6,7 @@ class DoctorsController < ApplicationController
   	@doctor = Doctor.new(doctor_params)
   	@doctor.user = current_user
   	if @doctor.save
-  		redirect_to retailer_path(doctor)
+  		redirect_to doctor_path(@doctor)
   	else
   		render :new
   	end
@@ -33,7 +33,7 @@ class DoctorsController < ApplicationController
   end
 
   def doctor_params
-		params.require(:doctor).permit(:user_id, :first_name, :lest_name, :rpps, :am, :address, :phone, :speciality)
+		params.require(:doctor).permit(:user_id, :first_name, :last_name, :rpps, :am, :address, :phone, :speciality)
   end
 
   def set_doctor

@@ -1,2 +1,17 @@
-<h1>Retailer#new</h1>
-<p>Find me in app/views/retailer/new.html.erb</p>
+<div class="form-profile">
+	<div>
+		<h2>Nouveau profil</h2>
+	</div>
+	<div class="form-inputs">
+		<%= simple_form_for @retailer do |f| %>
+	    <%= f.error_notification %>
+			<%= f.input :name %>
+			<%= f.input :siret, as: :integer %>
+			<%= f.input :address, as: :string %>			
+			<%= f.input :phone, as: :integer %>			
+		<div class="form-actions">
+			<%= f.button :submit, "Créer mon compte" %>
+		</div>
+		<% end %>
+	</div>
+</div>

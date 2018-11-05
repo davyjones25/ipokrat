@@ -7,7 +7,7 @@ class RetailersController < ApplicationController
   	@retailer = Retailer.new(retailer_params)
   	@retailer.user = current_user
   	if @retailer.save
-  		redirect_to retailer_path(retailer)
+  		redirect_to retailer_path(@retailer)
   	else
   		render :new
   	end

@@ -28,11 +28,12 @@
     background-color: #1DE3A9;
     opacity: 1;
     color: white;
-
+  }
+  .link {
+    text-align: center;
   }
 
   .form-actions {
-	  display: flex;
 		justify-content: center;
   	flex-direction: column;
   	text-align: center;

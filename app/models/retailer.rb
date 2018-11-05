@@ -6,5 +6,5 @@ class Retailer < ApplicationRecord
 	
 	has_many :clients, through: :prescriptions
 
-	validates :name, :siret, :address, presence: true
+	validates :name, :siret, :address, :phone, presence: true
 end

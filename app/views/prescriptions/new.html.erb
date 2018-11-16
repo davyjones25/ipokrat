@@ -6,7 +6,7 @@
 		<h2>Nouvelle prescription</h2>
 	</div>
 	<div class="form-inputs">
-		<%= simple_form_for @prescription.drugs do |f| %>
+		<%= simple_form_for @prescription do |f| %>
 	    <%= f.error_notification %>
 	    <%= @prescription.client.first_name %>
 	    <%= @prescription.client.last_name %>

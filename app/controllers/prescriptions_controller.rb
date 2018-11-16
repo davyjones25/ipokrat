@@ -14,7 +14,8 @@ class PrescriptionsController < ApplicationController
 
   def new
   	@prescription = Prescription.new
-    @prescription.client = 
+    @drug = Drug.new
+  # @prescription.client = 
   end
 
   def destroy

@@ -20,6 +20,7 @@ class ClientsController < ApplicationController
   end
 
   def index
+    @clients = Client.all
   end
 
   def update
